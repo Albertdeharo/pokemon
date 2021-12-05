@@ -1,13 +1,18 @@
-import React, {useState} from 'react'
+import React, {useState, useContext} from 'react'
 import { Container } from './Searchbar.elements'
 import {searchPokemon} from '../../api-utils'
 import './searchbar.scss'
+import { FcLike, FcLikePlaceholder } from 'react-icons/fc';
+import FavoriteContext from '../../contexts/favorites';
 
 
 const SearchBar = () => {
     const [search, setSearch] = useState('');
     const [pokemon, setPokemon] = useState('');
-    
+
+    const {favoritePokemons} = useContext(FavoriteContext);
+    console.log(favoritePokemons);
+
     const onChange = (e) => {
         setSearch(e.target.value);
     }
@@ -29,6 +34,9 @@ const SearchBar = () => {
                 onClick={onClick}
                 >Buscar
                 </button>
+            </div>
+            <div className="favorites-container">
+                <FcLikePlaceholder/> {favoritePokemons.length}
             </div>
             {/* <div>
                 <div> {search} </div>

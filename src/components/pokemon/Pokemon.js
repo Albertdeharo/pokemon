@@ -1,10 +1,21 @@
-import React from 'react'
-import { FcLike } from 'react-icons/fc';
+import React, {useContext} from 'react'
+import { FcLike, FcLikePlaceholder } from 'react-icons/fc';
 import './pokemon.scss'
+import FavoriteContext from '../../contexts/favorites';
 
 const Pokemon = (props) => {
     const {pokemon} = props;
-    console.log(pokemon);
+    const {favoritePokemons, updateFavoritePokemons} = useContext(FavoriteContext);
+
+    const Like = <FcLikePlaceholder/>;
+    const Liked = <FcLike/>;
+    const heart = favoritePokemons.includes(pokemon.name) ? Liked:Like;
+
+    const clickHeart = (e) => {
+        e.preventDefault();
+        updateFavoritePokemons(pokemon.name);
+    }
+
     return (
         <div className="pokemon-card">
             <div className="pokemon-img-container">
@@ -26,7 +37,9 @@ const Pokemon = (props) => {
                             )
                         })}
                     </div>
-                    <div className="pokemon-type"><FcLike/></div>
+                    <button onClick={clickHeart}>
+                        <div className="pokemon-favorite">{heart}</div>
+                    </button>
                 </div>
             </div>
         </div>
