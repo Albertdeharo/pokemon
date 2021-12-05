@@ -6,20 +6,22 @@ import { FcLike, FcLikePlaceholder } from 'react-icons/fc';
 import FavoriteContext from '../../contexts/favorites';
 
 
-const SearchBar = () => {
+const SearchBar = (props) => {
+    const {onSearch} = props;
     const [search, setSearch] = useState('');
-    const [pokemon, setPokemon] = useState('');
 
     const {favoritePokemons} = useContext(FavoriteContext);
-    console.log(favoritePokemons);
 
     const onChange = (e) => {
         setSearch(e.target.value);
+        if (e.target.value.length === 0) {
+            onSearch(null);
+        }
     }
 
     const onClick = async (e) => {
-        const data = await searchPokemon(search);
-        setPokemon(data);
+        onSearch(search);
+
     }
 
     return (
@@ -38,16 +40,6 @@ const SearchBar = () => {
             <div className="favorites-container">
                 <FcLikePlaceholder/> {favoritePokemons.length}
             </div>
-            {/* <div>
-                <div> {search} </div>
-                {pokemon &&
-                    <div>
-                        <div>Nombre:{pokemon.name}</div>
-                        <div>Peso:{pokemon.weight}</div>
-                        <img src={pokemon.sprites.front_default} alt="" />
-                    </div>
-                }
-            </div> */}
         </Container>
     )
 }
