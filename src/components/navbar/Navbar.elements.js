@@ -20,6 +20,9 @@ export const LogoContainer = styled.div`
     align-items: center;
     font-size: 1.2rem;
     font-family: sans-serif;
+    & img {
+        width: 150px;
+    }
 `;
 export const Menu = styled.ul`
     height: 100%;

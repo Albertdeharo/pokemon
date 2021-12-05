@@ -1,16 +1,27 @@
-import React, {useState} from 'react'
+import React, {useState, useEffect} from 'react'
+import {NavLink} from "react-router-dom";
 import { Container, LogoContainer, Menu, MenuItem, MenuItemLink, MobileIcon, Wrapper } from './Navbar.elements'
-import { FaBattleNet, FaBars, FaTimes } from "react-icons/fa"
+import { FaBars, FaTimes } from "react-icons/fa"
+const localStorageKey = "favorite_pokemon";
 
 const Navbar = () => {
+    let imgUrl = "https://raw.githubusercontent.com/PokeAPI/media/master/logo/pokeapi_256.png"
     const [showMobileMenu, setShowMobileMenu] = useState(false);
-   
+    const [favoritesNumb, setFavoritesNumb] = useState('');
+    const getFavoritesNumb = () => {
+        const favoritesStorage = JSON.parse(window.localStorage.getItem(localStorageKey)) || [];
+        setFavoritesNumb(favoritesStorage)
+     }
+
+    useEffect(() => {
+        getFavoritesNumb();
+    }, [favoritesNumb])
+
     return (
         <Container>
             <Wrapper>
                 <LogoContainer>
-                    <FaBattleNet/>
-                    <p>123</p>
+                    <img src={imgUrl} alt="" />
                 </LogoContainer>
                 <MobileIcon onClick={() => setShowMobileMenu(!showMobileMenu)}>
                     {
@@ -18,28 +29,33 @@ const Navbar = () => {
                     }
                 </MobileIcon>
                 <Menu open={showMobileMenu}>
-                    <MenuItem>
-                        <MenuItemLink>
-                            HOME
-                        </MenuItemLink>
-                    </MenuItem>
-                    <MenuItem>
-                        <MenuItemLink>
-                            HOME2
-                        </MenuItemLink>
-                    </MenuItem>
-                    <MenuItem>
-                        <MenuItemLink>
-                            HOME3
-                        </MenuItemLink>
-                    </MenuItem>
+                    <NavLink to="/">
+                        <MenuItem>
+                            <MenuItemLink>
+                                HOME
+                            </MenuItemLink>
+                        </MenuItem>
+                    </NavLink>
+                    <NavLink to="/pokedex">
+                        <MenuItem>
+                            <MenuItemLink>
+                                POKEDEX
+                            </MenuItemLink>
+                        </MenuItem>
+                    </NavLink>
+                    <NavLink to="/favorites">
+                        <MenuItem>
+                            <MenuItemLink>
+                                FAVORITES {favoritesNumb.length}
+                            </MenuItemLink>
+                        </MenuItem>
+                    </NavLink>
                     <MenuItem>
                         <MenuItemLink>
                             HOME4
                         </MenuItemLink>
                     </MenuItem>
                 </Menu>
-
             </Wrapper>
         </Container>
     )
