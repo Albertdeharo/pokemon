@@ -1,19 +1,23 @@
-import React, {useState} from 'react'
+import React from 'react'
 import Pagination from '../pagination/Pagination';
 import Pokemon from '../pokemon/Pokemon';
 import './pokedex.scss'
 
 const Pokedex = (props) => {
     const {pokemons, page, setPage, total, loading} = props;
-
     const lastPage = () => {
         const nextPage = Math.max(page -1, 0);
         setPage(nextPage);
     }
 
     const nextPage = () => {
-        const nextPage = Math.min(page +1, total);
-        setPage(nextPage);
+        if (pokemons.length === 1) {
+            const nextPage = 0;
+            setPage(nextPage);
+        } else {
+            const nextPage = Math.min(page +1, total);
+            setPage(nextPage);
+        }
     }
 
     return (

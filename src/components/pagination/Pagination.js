@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react'
+import React from 'react'
 import { BsFillArrowLeftSquareFill, BsFillArrowRightSquareFill } from "react-icons/bs"
 
 import './pagination.scss'

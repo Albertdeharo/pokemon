@@ -16,7 +16,6 @@ export default function Home() {
     const [notFound, setNotFound] = useState(false);
     const [searching, setSearching] = useState(false);
     
-
     const fetchPokemons = async () => {
       try {
         setLoading(true);

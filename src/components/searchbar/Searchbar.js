@@ -1,8 +1,7 @@
 import React, {useState, useContext} from 'react'
 import { Container } from './Searchbar.elements'
-import {searchPokemon} from '../../api-utils'
 import './searchbar.scss'
-import { FcLike, FcLikePlaceholder } from 'react-icons/fc';
+import { FcLikePlaceholder } from 'react-icons/fc';
 import FavoriteContext from '../../contexts/favorites';
 
 
