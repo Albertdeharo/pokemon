@@ -2,6 +2,7 @@ import React, {useState, useEffect} from 'react'
 import {NavLink} from "react-router-dom";
 import { Container, LogoContainer, Menu, MenuItem, MenuItemLink, MobileIcon, Wrapper } from './Navbar.elements'
 import { FaBars, FaTimes } from "react-icons/fa"
+import './navbar.scss'
 const localStorageKey = "favorite_pokemon";
 
 const Navbar = () => {
@@ -18,7 +19,7 @@ const Navbar = () => {
     }, [favoritesNumb])
 
     return (
-        <Container>
+        <Container className="navbar-container">
             <Wrapper>
                 <LogoContainer>
                     <img src={imgUrl} alt="" />
