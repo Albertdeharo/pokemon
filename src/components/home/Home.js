@@ -10,7 +10,6 @@ const [PokemonExperience, setPokemonExperience] = useState()
 const [PokemonSprites, setPokemonSprites] = useState()
 const [PokemonBigImg, setPokemonBigImg] = useState()
 const [PokemonStats, setPokemonStats] = useState()
-const [PokemonStatsName, setPokemonStatsName] = useState()
 
 const getRandomInt = (min, max) => {
   return Math.floor(Math.random() * (max - min)) + min;
@@ -28,29 +27,14 @@ const fetchData = async () => {
   setPokemonSprites(data.sprites.other.dream_world.front_default);
   setPokemonBigImg(data.sprites.other.home.front_default);
   setPokemonStats(data.stats);
-  // setPokemonStatsName(data.stats.stat.name);
   } catch (error) {
   console.log(error);
   }
 }
 
-// {
-//   PokemonStats?.map(stat => <div key={stat}>
-//     {stat.base_stat}</div>)
-//   }
-
-const getPokemonsStatName = () => {
-  setPokemonStatsName(PokemonStats);
-    PokemonStatsName?.map(stat => <div key={stat}>
-    123</div>)
-}
-
 useEffect(() => {
   fetchData();
-  getPokemonsStatName();
 }, [])
-// console.log(PokemonStats);
-// console.log(PokemonStatsName);
 
 return ( <>
   <div className="home-container">
@@ -65,14 +49,14 @@ return ( <>
         </div>
         <div className="desc">
           <h6 className="primary-text">{PokemonName}</h6>
-          <h6 className="secondary-text">{PokemonExperience}</h6>
-          {
-          PokemonStats?.map(stat =>
-            <div key={stat}>
-              {stat.base_stat}
-            </div>)
-          }
-
+          <h6 className="secondary-text"> EXPERIENCE: {PokemonExperience}</h6>
+          <h6 className="secondary-text"> STATS: </h6>
+            {
+            PokemonStats?.map(stat =>
+              <div key={stat}>
+                {stat.stat.name} - {stat.base_stat}
+              </div>)
+            }
         </div>
         {/* <button className="primary-text">{PokemonStats.base_stat}</button> */}
         <div className="details">
