@@ -7,7 +7,7 @@ import './pokemonDetail.scss'
 
 const PokemonDetail = () => {
     let slug  = useParams();
-    console.log(slug.name);
+    // console.log(slug.name);
     const pokemon = slug.name;
     const [error, setError] = useState(null);
     const [isLoaded, setIsLoaded] = useState(false);
@@ -37,7 +37,7 @@ const PokemonDetail = () => {
           }
         )
     }, [])
-    console.log(imgPro);
+    // console.log(imgPro);
     if (error) {
       return <div>Error: {error.message}</div>;
     } else if (!isLoaded) {

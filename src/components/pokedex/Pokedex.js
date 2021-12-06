@@ -54,7 +54,7 @@ export default function Home() {
           updated.push(name);
         }
         setFavorites(updated);
-        console.log(updated);
+        // console.log(updated);
         window.localStorage.setItem(localStorageKey, JSON.stringify(updated));
     }
 

@@ -9,14 +9,14 @@ const Navbar = () => {
     let imgUrl = "https://raw.githubusercontent.com/PokeAPI/media/master/logo/pokeapi_256.png"
     const [showMobileMenu, setShowMobileMenu] = useState(false);
     const [favoritesNumb, setFavoritesNumb] = useState('');
-    const getFavoritesNumb = () => {
-        const favoritesStorage = JSON.parse(window.localStorage.getItem(localStorageKey)) || [];
-        setFavoritesNumb(favoritesStorage)
-     }
+    // const getFavoritesNumb = () => {
+    //     const favoritesStorage = JSON.parse(window.localStorage.getItem(localStorageKey)) || [];
+    //     setFavoritesNumb(favoritesStorage)
+    //  }
 
-    useEffect(() => {
-        getFavoritesNumb();
-    }, [favoritesNumb])
+    // useEffect(() => {
+    //     getFavoritesNumb();
+    // }, [favoritesNumb])
 
     return (
         <Container className="navbar-container">
@@ -47,7 +47,8 @@ const Navbar = () => {
                     <NavLink to="/favorites">
                         <MenuItem>
                             <MenuItemLink>
-                                FAVORITES {favoritesNumb.length}
+                                FAVORITES 
+                                {/* {favoritesNumb.length} */}
                             </MenuItemLink>
                         </MenuItem>
                     </NavLink>

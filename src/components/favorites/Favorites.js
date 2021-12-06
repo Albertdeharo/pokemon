@@ -27,8 +27,8 @@ export default function Favorites() {
             }
           )
       }, [])
-      console.log(storage);
-      console.log(items);
+      // console.log(storage);
+      // console.log(items);
       if (error) {
         return <div>Error: {error.message}</div>;
       } else if (!isLoaded) {

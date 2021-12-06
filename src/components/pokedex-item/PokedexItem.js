@@ -19,7 +19,7 @@ const Pokedex = (props) => {
             setPage(nextPage);
         }
     }
-    console.log(pokemons);
+    // console.log(pokemons);
     return (
         <div className="pokedex-container">
             <div className="header">

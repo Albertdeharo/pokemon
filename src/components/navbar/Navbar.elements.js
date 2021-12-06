@@ -55,7 +55,7 @@ export const MenuItem = styled.li`
         transition: 0.5s all ease;
     }
 `;
-export const MenuItemLink = styled.a`
+export const MenuItemLink = styled.span`
     display: flex;
     justify-content: center;
     align-items: center;
